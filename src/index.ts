@@ -29,7 +29,51 @@ class SolanaDocsServer {
       },
       {
         capabilities: {
-          tools: {},
+          tools: {
+            get_latest_docs: {
+              name: 'get_latest_docs',
+              description: 'Get latest Solana documentation sections',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  section: {
+                    type: 'string',
+                    description: 'Documentation section to fetch (e.g., "developing", "running-validator", "economics")',
+                  },
+                },
+                required: ['section'],
+              },
+            },
+            search_docs: {
+              name: 'search_docs',
+              description: 'Search through Solana documentation',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  query: {
+                    type: 'string',
+                    description: 'Search query',
+                  },
+                },
+                required: ['query'],
+              },
+            },
+            get_api_reference: {
+              name: 'get_api_reference',
+              description: 'Get Solana SDK API reference details',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  item: {
+                    type: 'string',
+                    description: 'API item to look up (e.g., "transaction", "pubkey", "system_instruction")',
+                  },
+                },
+                required: ['item'],
+              },
+            }
+          },
+          resources: {}
         },
       }
     );
